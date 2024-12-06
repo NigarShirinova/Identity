@@ -1,0 +1,52 @@
+﻿@using Identity.ViewModels.Account
+@model AccountRegisterVM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up / Login Form</title>
+    <link rel="stylesheet" href="~/assets/style.css">
+</head>
+<body>
+    <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true">
+        <div asp-validation-summary="All"></div>
+        <div class="signup">
+            <form asp-action="Register" asp-controller="Account" method="post">
+                <label for="chk" aria-hidden="true">Sign up</label>
+                <input asp-for="Email" placeholder="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+                <input asp-for="Country" placeholder="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+
+                <input asp-for="City" placeholder="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+
+                <input asp-for="PhoneNumber" placeholder="Phone Number" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+                <input asp-for="Password" placeholder="Password" class="form-control" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+                <input asp-for="ConfirmPassword" placeholder="Confirm Password" class="form-control" type="password" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                <button type="submit">Sign up</button>
+            </form>
+            <div style="text-align: center; margin-top: 5px;">
+                <p style="color: #fff; font-size: 22px">Already have an account?</p>
+                <a href="@Url.Action("Login", "Account")" style="text-decoration: none; padding: 10px 60px; background-color: #573b8a; color: #fff; border-radius: 4px; font-size: 20px; display: inline-block; magin-top: 5px">
+                    Go to Login
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.12/dist/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
