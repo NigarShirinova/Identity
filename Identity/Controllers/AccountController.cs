@@ -2,8 +2,7 @@
 using Identity.ViewModels.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
+using AccountLoginVM = Identity.ViewModels.Account.AccountLoginVM;
 
 namespace Identity.Controllers
 {
@@ -11,11 +10,12 @@ namespace Identity.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         [HttpGet]
@@ -57,6 +57,7 @@ namespace Identity.Controllers
             return RedirectToAction("Login");
         }
 
+
         [HttpGet]
         public IActionResult Login()
         {
@@ -65,7 +66,7 @@ namespace Identity.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(AccountLoginVM model, string returnUrl = null)
+        public async Task<IActionResult> Login(AccountLoginVM model)
         {
             if (!ModelState.IsValid)
             {
@@ -99,5 +100,7 @@ namespace Identity.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login");
         }
+
+
     }
 }
