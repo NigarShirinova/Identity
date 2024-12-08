@@ -1,0 +1,92 @@
+﻿@using Identity.Areas.Admin.Models.User
+@model UserCreateVM
+
+<form enctype="multipart/form-data" method="post" asp-action="create" asp-controller="user" class="form-container">
+    <div asp-validation-summary="All" class="validation-summary"></div>
+
+    <div class="form-group">
+        <label asp-for="EmailAddress" class="form-label">Email</label>
+        <input asp-for="EmailAddress" class="form-input" placeholder="Enter your email">
+        <span asp-validation-for="EmailAddress" class="validation-message"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password" class="form-label">Password</label>
+        <input asp-for="Password" type="password" class="form-input" placeholder="Enter your password">
+        <span asp-validation-for="Password" class="validation-message"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
+        <input asp-for="ConfirmPassword" type="password" class="form-input" placeholder="Confirm your password">
+        <span asp-validation-for="ConfirmPassword" class="validation-message"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Country" class="form-label">Country</label>
+        <input asp-for="Country" class="form-input" placeholder="Enter your country">
+        <span asp-validation-for="Country" class="validation-message"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="City" class="form-label">City</label>
+        <input asp-for="City" class="form-input" placeholder="Enter your city">
+        <span asp-validation-for="City" class="validation-message"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RoleIds" class="form-label">Roles</label>
+        <select asp-for="RoleIds" asp-items="@Model.Roles" multiple class="form-select"></select>
+        <span asp-validation-for="RoleIds" class="validation-message"></span>
+    </div>
+
+    <button type="submit" class="btn-submit">Create User</button>
+</form>
+
+<style>
+    .form-container {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #ffe6f0;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #cc0066;
+    }
+
+    .form-input, .form-select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #cc0066;
+        border-radius: 5px;
+    }
+
+    .btn-submit {
+        background-color: #ff3399;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+        .btn-submit:hover {
+            background-color: #cc0066;
+        }
+
+    .validation-summary, .validation-message {
+        color: #cc0033;
+        font-size: 0.9em;
+    }
+</style>

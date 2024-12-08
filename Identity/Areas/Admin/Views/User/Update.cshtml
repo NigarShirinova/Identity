@@ -1,0 +1,105 @@
+﻿@using Identity.Areas.Admin.Models.User
+@model UserUpdateVM
+
+<div class="form-container">
+    <form enctype="multipart/form-data" method="post" asp-action="update" asp-controller="user" class="update-form">
+        <div asp-validation-summary="All" class="validation-summary"></div>
+
+        <div class="form-group">
+            <label asp-for="EmailAddress">Email Address</label>
+            <input asp-for="EmailAddress" class="form-control" placeholder="Enter your email">
+            <span asp-validation-for="EmailAddress" class="validation-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" type="password" class="form-control" placeholder="Enter a new password">
+            <span asp-validation-for="Password" class="validation-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ConfirmPassword">Confirm Password</label>
+            <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm your password">
+            <span asp-validation-for="ConfirmPassword" class="validation-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Country">Country</label>
+            <input asp-for="Country" class="form-control" placeholder="Enter your country">
+            <span asp-validation-for="Country" class="validation-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="City">City</label>
+            <input asp-for="City" class="form-control" placeholder="Enter your city">
+            <span asp-validation-for="City" class="validation-message"></span>
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="RoleIds">Roles</label>
+            <select asp-for="RoleIds" asp-items="@Model.Roles" class="form-control" multiple></select>
+            <span asp-validation-for="RoleIds" class="validation-message"></span>
+        </div>
+
+        <button type="submit" class="btn btn-pink">Update</button>
+    </form>
+</div>
+
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffe6f0;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .update-form {
+        font-family: Arial, sans-serif;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #cc0066;
+            margin-bottom: 5px;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+        .form-control:focus {
+            border-color: #ff99c2;
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 153, 194, 0.5);
+        }
+
+    .validation-message {
+        font-size: 0.9rem;
+        color: #cc0000;
+    }
+
+    .btn-pink {
+        background-color: #ff3399;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+        .btn-pink:hover {
+            background-color: #cc0066;
+        }
+</style>

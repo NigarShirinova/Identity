@@ -1,0 +1,142 @@
+﻿@using Identity.Areas.Admin.Models.User
+@model UserIndexVM
+
+<!-- Page Heading -->
+<div class="page-header">
+    <h1 class="page-title">Users</h1>
+    <a class="btn-create" asp-action="create" asp-controller="user">+ Create User</a>
+</div>
+
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Country</th>
+            <th>City</th>
+
+            <th>Roles</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Country</td>
+                <td>@user.City</td>
+          
+                <td>
+                    @foreach (var role in user.Roles)
+                    {
+                        <span class="role-tag">@role</span>
+                    }
+                </td>
+                <td>
+                    <a class="btn-action btn-update" asp-action="update" asp-controller="user" asp-route-id="@user.Id">Update</a>
+                    <form method="post" asp-action="delete" asp-controller="user" asp-route-id="@user.Id" class="inline-form">
+                        <button type="submit" class="btn-action btn-delete">Delete</button>
+                    </form>
+                    <a class="btn-action btn-details" asp-action="details" asp-controller="user" asp-route-id="@user.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .page-title {
+        font-size: 1.3rem;
+        color: #cc0066;
+    }
+
+    .btn-create {
+        background-color: #ff99c2;
+        color: #fff;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+        .btn-create:hover {
+            background-color: #cc0066;
+        }
+
+    .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+        .styled-table th, .styled-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .styled-table th {
+            background-color: #ffe6f0;
+            color: #cc0066;
+        }
+
+        .styled-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+    .role-tag {
+        display: inline-block;
+        padding: 2px 8px;
+        background-color: #ff99c2;
+        color: white;
+        border-radius: 12px;
+        font-size: 0.8rem;
+    }
+
+    .btn-action {
+        padding: 5px 8px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        margin-right: 5px;
+        font-size: 0.9rem;
+    }
+
+    .btn-update {
+        background-color: #28a745;
+        color: #fff;
+    }
+
+        .btn-update:hover {
+            background-color: #218838;
+        }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+
+    .btn-details {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+        .btn-details:hover {
+            background-color: #0056b3;
+        }
+
+    .inline-form {
+        display: inline;
+    }
+</style>

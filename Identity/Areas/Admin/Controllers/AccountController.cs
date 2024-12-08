@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using AccountLoginVM = Identity.Areas.Admin.Models.Account.AccountLoginVM;
 
-namespace Identity.Areas.Admin.Models
+namespace Identity.Areas.Admin
 {
     [Area("Admin")]
     public class AccountController : Controller
