@@ -45,7 +45,7 @@ namespace Identity.Controllers
             var user = new User
             {
                 UserName = model.Email, 
-                Email = model.Email,
+                Email = model.Email, 
                 City = model.City,
                 Country = model.Country,
                 PhoneNumber = model.PhoneNumber
